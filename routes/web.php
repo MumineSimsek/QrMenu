@@ -45,6 +45,8 @@ Route::group(['prefix' => 'urun','middleware' => 'auth'],function (){
     Route::post('/durum','CMS\productController@updateStatus')->name('product.status');
 
 });
+
+//kategori rootları eklendi
 Route::group(['prefix' => 'kategori','middleware' => 'auth'],function (){
     Route::get('/','CMS\categoryController@index')->name('category.list');
     Route::get('/ekle','CMS\categoryController@create_form')->name('category.createForm');
@@ -56,6 +58,8 @@ Route::group(['prefix' => 'kategori','middleware' => 'auth'],function (){
     Route::get('detay/{id}','CMS\categoryController@detail')->name('category.detail');
 
 });
+
+//alt-kategori rootları eklendi
 Route::group(['prefix' => 'alt-kategori','middleware' => 'auth'],function (){
     Route::get('/','CMS\subCategoryController@index')->name('sub_category.list');
     Route::get('/ekle','CMS\subCategoryController@create_form')->name('sub_category.createForm');
@@ -67,6 +71,8 @@ Route::group(['prefix' => 'alt-kategori','middleware' => 'auth'],function (){
     Route::get('detay/{id}','CMS\subCategoryController@detail')->name('sub_category.detail');
 
 });
+
+//qr route eklendi
 Route::get('qr',function (){
 
    return view('qr.index');
