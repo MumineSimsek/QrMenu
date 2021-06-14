@@ -35,10 +35,13 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'PageController@typography']);
 		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'PageController@upgrade']);
 });
+//urun e routes
 Route::group(['prefix' => 'urun','middleware' => 'auth'],function (){
+	
     Route::get('/','CMS\productController@index')->name('product.list');
     Route::get('/ekle','CMS\productController@create_form')->name('product.createForm');
     Route::post('/ekle','CMS\productController@create')->name('prodcut.create');
+	
     Route::get('/duzenle/{id}','CMS\productController@edit_form')->name('product.edit_form');
     Route::post('/guncelle','CMS\productController@edit')->name('product.edit');
     Route::get('/sil/{id}','CMS\productController@remove')->name('product.remove');
@@ -46,7 +49,7 @@ Route::group(['prefix' => 'urun','middleware' => 'auth'],function (){
 
 });
 
-//kategori rootları eklendi
+//kategori routes
 Route::group(['prefix' => 'kategori','middleware' => 'auth'],function (){
     Route::get('/','CMS\categoryController@index')->name('category.list');
     Route::get('/ekle','CMS\categoryController@create_form')->name('category.createForm');
@@ -59,7 +62,7 @@ Route::group(['prefix' => 'kategori','middleware' => 'auth'],function (){
 
 });
 
-//alt-kategori rootları eklendi
+//alt-kategori routes
 Route::group(['prefix' => 'alt-kategori','middleware' => 'auth'],function (){
     Route::get('/','CMS\subCategoryController@index')->name('sub_category.list');
     Route::get('/ekle','CMS\subCategoryController@create_form')->name('sub_category.createForm');
@@ -72,7 +75,7 @@ Route::group(['prefix' => 'alt-kategori','middleware' => 'auth'],function (){
 
 });
 
-//qr route eklendi
+//qr routes
 Route::get('qr',function (){
 
    return view('qr.index');
