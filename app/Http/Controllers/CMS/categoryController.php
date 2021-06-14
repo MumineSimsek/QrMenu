@@ -76,14 +76,14 @@ class categoryController extends Controller
         return redirect(route('category.list'));
 
     }
-
+//durum güncelleme fonksiyonu 
     public function updateStatus(Request $request)
     {
         category::where('id', $request->id)->update(array('status' => $request->status));
 
 
     }
-
+//silme fonksiyonu
     public function remove($id)
     {
         $category = category::find($id);
