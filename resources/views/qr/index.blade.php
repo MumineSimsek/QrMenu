@@ -10,6 +10,7 @@
 {{--        <p>Scan me to return to the original page.</p>--}}
     </div>
 @endsection
+//qr code js fonksiyonu eklendi
 @stack('js')
 <script>
     const buttons = document.querySelectorAll("button");
@@ -23,12 +24,17 @@
         #${imgId} { display: block; }
      }`;
 
+
         if (window.print) {
             window.print();
+            
+            
         }
+        
     }
 
     buttons.forEach(button => {
+    
         button.addEventListener("click", buttonHandler);
     });
 </script>
