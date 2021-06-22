@@ -55,29 +55,37 @@ class subCategoryController extends Controller
         return view('sub_category.edit');
 
     }
+    //sub_category edit fonksiyonu 
     public function edit(Request $request)
     {
         $category = subCategory::where('cafe_id',Auth::user()->cafe_id)->where('id',$request->id)->first();
         $data = [
             'cafe_id' => Auth::user()->cafe_id,
             'name' => $request->name,
+            
             'image' => $request->image->store('/admin_files/images/subCategory_files', 'attachment'),
             'category_id'=>$request->category_id,
+            
             'status' => 1,
 
 
         ];
         if ($request->has('image')) {
             $category->image = $request->image->store('/admin_files/images/subCategory_files', 'attachment');
+            
         }
         $category->update($data);
+        
         return redirect(route('sub_category.list'));
 
     }
+    // detay fonksiyonu 
 
     public function detail($id)
     {
+        
         $sub_category = subCategory::where('cafe_id', Auth::user()->cafe_id)->where('id', $id)->first();
+        
         View::share('sub_category', $sub_category);
         return view('sub_category.detail');
     }
@@ -86,9 +94,11 @@ class subCategoryController extends Controller
         subCategory::where('id', $request->id)->update(array('status' => $request->status));
 
     }
+    //sub_category silme fonksiyonu 
     public function remove($id)
     {
         $sub_category = subCategory::where('cafe_id',Auth::user()->cafe_id)->where('id',$id)->first();
+        
         $sub_category->delete();
         return redirect(route('sub_category.list'));
     }

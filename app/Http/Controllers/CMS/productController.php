@@ -21,11 +21,14 @@ class productController extends Controller
 
 
     }
-
+//create_form fonksiyonu
     public function create_form()
     {
+        
         $sub_categories = subCategory::where('cafe_id', Auth::user()->cafe_id)->get();
+        
         View::share('sub_categories', $sub_categories);
+        
         return view('products.create');
     }
 
@@ -61,21 +64,25 @@ class productController extends Controller
         return view('products.edit');
 
     }
-
+//edit fonksiyonu 
     public function edit(Request $request)
     {
         $product = product::where('cafe_id',Auth::user()->cafe_id)->where('id',$request->id);
+        
         $data = [
             'cafe_id' => Auth::user()->cafe_id,
             'name' => $request->name,
             'description' => $request->description,
+            
             'image' => $request->image->store('/admin_files/images/product_files', 'attachment'),
             'subCategory_id' => $request->sub_category_id,
+            
             'price' => $request->price,
             'status' => 1,
 
 
         ];
+        // image control 
         if ($request->has('image')) {
             $product->image = $request->image->store('/admin_files/images/product_files', 'attachment');
         }
