@@ -80,7 +80,26 @@
                                              id="{{$subCategory->id}}{{$key2}}" role="tabpanel"
                                              aria-labelledby="pills-breakfast-tab">
 
-{{--                                           product area--}}
+                                               <div class="row">
+                                                @foreach($subCategory->products as $product)
+                                                    @if($product->status == 1)
+                                                        {{--                                        @if($product->subCategory == $subCategory)--}}
+                                                        <div class="col-md-6 ftco-animate">
+                                                            <div class="media menu-item">
+
+                                                                <div class="media-body">
+                                                                    <img src="{{asset($product->image)}}" class="img-fluid">
+                                                                    <h5 class="mt-0">{{$product->name}}</h5>
+                                                                    <p style=" word-break: break-all">{{$product->description}}</p>
+                                                                    <h6 class="text-primary menu-price">{{$product->price}}₺</h6>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        {{--                                        @endif--}}
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         </div>
                                     @endif
                                 @endforeach
