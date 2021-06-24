@@ -20,6 +20,7 @@ class CreateCafesTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('address');
+            $table->integer('theme_id');
             $table->timestamps();
         });
     }
