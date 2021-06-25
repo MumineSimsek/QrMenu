@@ -80,6 +80,8 @@ Route::get('qr',function (){
 
    return view('qr.index');
 })->name('qr');
+
+Route::get('theme_change/{id}','Menu\menuController@theme_change')->name('theme.change');
 //Route::get('storage/{filename}', function ($filename)
 //{
 //    $path = storage_path($filename);
