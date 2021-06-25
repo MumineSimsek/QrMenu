@@ -84,7 +84,13 @@
                 </a>
 
             </li>
+            <li @if ($pageSlug == 'theme') class="active " @endif>
+                <a href="{{ route('theme')  }}">
+                    <i class="tim-icons icon-atom"></i>
+                    <p>Menü Tema</p>
+                </a>
 
+            </li>
 
         </ul>
     </div>
