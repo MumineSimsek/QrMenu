@@ -81,6 +81,12 @@ Route::get('qr',function (){
    return view('qr.index');
 })->name('qr');
 
+Route::get('theme',function (){
+ $cafe= \App\cafe::where('id' , Auth::user()->cafe_id)->first();
+ \Illuminate\Support\Facades\View::share('cafe',$cafe);
+    return view('menu_theme.menu_theme');
+})->name('theme');
+
 Route::get('theme_change/{id}','Menu\menuController@theme_change')->name('theme.change');
 //Route::get('storage/{filename}', function ($filename)
 //{
